@@ -20,7 +20,7 @@ use yii\helpers\Html;
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SUKUM 2024</title>
+    <title>Baja Keningau</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
@@ -50,7 +50,7 @@ $url = Yii::getAlias("@web") . '/images/';
 
 ?>
 
-<body class="hold-transition login-page" style="background-image:url('<?= $url; ?>background.png');background-repeat:no-repeat; background-position:center; background-size:cover;">
+<body class="hold-transition login-page" style="background-image:url('<?= $url; ?>risda.png');background-repeat:no-repeat; background-position:center; background-size:40%;">
     <?php $this->beginBody() ?>
     <div class="login-box">
         <!-- /.login-logo -->

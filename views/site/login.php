@@ -11,14 +11,14 @@ use yii\helpers\Url;
 
         <div class="card card-outline card-info">
             <div class="card-header text-center">
-                <a href="<?= Yii::$app->homeUrl ?>" class="h1">SUKUM&nbsp;<b>2024</b></a>
+                <a href="<?= Yii::$app->homeUrl ?>" class="h1">Baja Keningau&nbsp;<b>2024</b></a>
 
 
 
             </div>
             <div class="card-body login-card-body">
                 <p class="login-box-msg">
-                    SELAMAT DATANG KE SISTEM PENGURUSAN SUKAN STAF UNIVERSITI AWAM
+                    SELAMAT DATANG KE SISTEM BAJA KENINGAU
                 </p>
 
                 <?php $form = ActiveForm::begin(['id' => 'login-form']) ?>

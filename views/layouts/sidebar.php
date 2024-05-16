@@ -6,15 +6,14 @@ use yii\helpers\Html;
 $user = Yii::$app->user->identity; // Getting user id
 
 $model = TblUsers::find()->where(['id' => $user->id])->one();
-$daftar = TblPendaftaran::find()->where(['created_by' => $user->id])->one();
 error_reporting(0);
 ?>
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="opacity: .9;">
     <!-- Brand Logo -->
     <a href="index" class="brand-link">
-        <?php echo Html::img('@web/images/ums-logo-white.png', ['class' => 'brand-image', 'style' => 'width:100px']); ?>
-        <span class="brand-text">SUKUM 2024</span>
+        <?php //echo Html::img('@web/images/ums-logo-white.png', ['class' => 'brand-image', 'style' => 'width:100px']); ?>
+        <span class="brand-text">BAJA KENIGAU</span>
     </a>
 
     <!-- Sidebar -->
@@ -59,36 +58,10 @@ error_reporting(0);
                         'visible' => (Yii::$app->user->identity->type == 1) ? true : false,
                         'items' => [
                             ['label' => 'Senarai Pengguna', 'url' => ['admin/user-list'], 'icon' => 'users'],
-                            ['label' => 'Senarai Pendaftaran', 'url' => ['admin/senarai-pendaftaran'], 'icon' => 'list'],
-                            ['label' => 'Daftar Kejohanan', 'url' => ['admin/setup-index'], 'icon' => 'users'],
-                            ['label' => 'Tambah Sukan', 'url' => ['refsukan/index'], 'icon' => 'users'],
-                            ['label' => 'Tambah Kategori', 'url' => ['refkategori/index'], 'icon' => 'users'],
-                            ['label' => 'Senarai Sukan', 'url' => ['admin/senarai-sukan'], 'icon' => 'users'],
+                          
                         ],
                     ],
-                    [
-                        'label' => 'Kontijen',
-                        'icon' => 'university',
-                        'items' => [
-                            ['label' => 'Profil Kontijen', 'url' => ['kontijen/profil-kontijen?id='.$model->id], 'icon' => 'university'],
-
-                            ['label' => 'Senarai Pendaftaran', 'url' => ['kontijen/senarai-pendaftaran'], 'icon' => 'th-list'],
-                            ['label' => 'Pendaftaran Peserta', 'url' => ['kontijen/index-peserta'], 'icon' => 'edit'],
-
-                            // ['label' => 'Daftar Pemain', 'url' => ['kontijen/daftar-pemain'], 'icon' => 'user'],
-                            // ['label' => 'Pendaftaran Awal Kejohanan', 'url' => ['site/pendaftaran-awal'], 'icon' => 'edit'],
-                            ['label' => 'Pendaftaran Penginapan', 'url' => ['site/pendaftaran-penginapan'], 'icon' => 'hotel'],
-                        ],
-                    ],
-
-                    [
-                        'label' => 'Pengesahan',
-                        'icon' => 'check-square',
-                        'items' => [
-                            ['label' => 'Borang G-1', 'url' => ['kontijen/borang-pengesahan-awal-penyertaan?id='.$daftar->id], 'icon' => 'file'],
-
-                        ],
-                    ],
+                
                 ],
             ]);
 

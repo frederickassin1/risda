@@ -41,8 +41,8 @@ class TblUsers extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
     public function rules()
     {
         return [
-            [['type', 'status', 'update_by', 'ipta_id','no_tel','role'], 'integer'],
-            [['create_dt', 'update_dt', 'activation_token_expiry', 'password_reset_token_created_at', 'ipta_id'], 'safe'],
+            [['type', 'status', 'update_by','no_tel','role'], 'integer'],
+            [['create_dt', 'update_dt', 'activation_token_expiry', 'password_reset_token_created_at'], 'safe'],
             [['fullname', 'activation_token', 'password_reset_token'], 'string', 'max' => 255],
             [['email', 'password'], 'string', 'max' => 200],
             [['icno'], 'string', 'max' => 12],
@@ -56,7 +56,7 @@ class TblUsers extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
 
             [['fullname', 'email', 'password', 'password_repeat'], 'required', 'on' => 'register'],
             ['term', 'required', 'message' => 'Anda harus bersetuju dengan terma.', 'on' => 'register'],
-            [['fullname', 'email', 'type', 'status', 'ipta_id'], 'required', 'message' => 'Required Value', 'on' => 'update'],
+            [['fullname', 'email', 'type', 'status'], 'required', 'message' => 'Required Value', 'on' => 'update'],
 
         ];
     }
@@ -107,7 +107,6 @@ class TblUsers extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
             'create_dt' => 'Dibuat pada',
             'update_dt' => 'Dikemaskini pada',
             'term' => 'Setuju Terma',
-            'ipta_id' => 'IPTA',
             'updatedBy.nama' => 'Dikemaskini Oleh',
         ];
     }
@@ -204,11 +203,6 @@ class TblUsers extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
         $timestamp = (int) substr($token, strrpos($token, '_') + 1);
         $expire = Yii::$app->params['user.passwordResetTokenExpire']; // set this param in your config, e.g., 3600 for a 1-hour expiration
         return $timestamp + $expire >= time();
-    }
-
-    public function getIpta()
-    {
-        return $this->hasOne(RefIpta::class, ['id' => 'ipta_id']);
     }
 
     public function getUpdatedBy()

@@ -35,13 +35,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'model' => $model,
                 'attributes' => [
                     'id',
-                    'ipta.nama',
+                    // 'ipta.nama',
                     'fullname',
                     'email:email',
                     'userType',
                     'statusText',
                     'create_dt',
-                    'updatedBy.fullname',
                     'update_dt',
                 ],
             ]) ?>

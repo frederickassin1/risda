@@ -17,15 +17,12 @@ use yii\widgets\ActiveForm;
 
     <?= $form->errorSummary($model); ?>
 
-    <?= $form->field($model, 'ipta_id')->dropDownList(ArrayHelper::map(RefIpta::find()->where([])->all(),'id', 'nama')); ?>
-
     <?= $form->field($model, 'fullname')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'icno')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'type')->dropDownList([ '1' => 'ADMINISTRATOR','2' => 'FLEET','3' => 'NARSCO']) ?>
 
-    <?= $form->field($model, 'type')->dropDownList(['0' => 'Pengguna Biasa', '1' => 'Administrator']) ?>
-
-    <?= $form->field($model, 'status')->dropDownList(['0' => 'Tidak Aktif', '1' => 'Aktif']) ?>
+    <?= $form->field($model, 'status')->dropDownList([ '1' => 'Aktif','0' => 'Tidak Aktif',]) ?>
 
     <div class="form-group text-center">
         <?= Html::a('<i class="fas fa-undo"></i>&nbsp;Kembali', Url::to(['admin/user-list', 'id' => $model->id]), ['class' => 'btn btn-default']) ?>
