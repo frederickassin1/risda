@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-
+use app\models\TblPenerimaBaja;
 use app\models\TblUsers;
 use app\models\TblUsersSearch;
 use Yii;
@@ -104,6 +104,22 @@ class UsersController extends Controller
         }
 
         return $this->render('create', [
+            'model' => $model,
+        ]);
+    }
+    public function actionCreateReceipent()
+    {
+        $model = new TblPenerimaBaja();
+
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+        } else {
+            $model->loadDefaultValues();
+        }
+
+        return $this->render('create-receipent', [
             'model' => $model,
         ]);
     }

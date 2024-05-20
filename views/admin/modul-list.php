@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <div class="card-body">
         <p>
-            <?= Html::a('<i class="fas fa-plus"></i>&nbsp;Tambah Pengguna Baharu', ['users/create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('<i class="fas fa-plus"></i>&nbsp;Tambah Modul', ['admin/create-modul'], ['class' => 'btn btn-success']) ?>
         </p>
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
@@ -33,25 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'tableOptions' => ['class' => 'table table-striped table-sm table-bordered'],
             'columns' => [
                 ['class' => 'yii\grid\SerialColumn'],
-                'fullname',
-                'email:email',
-                [
-                    'attribute' => 'type',
-                    'label' => 'Jenis',
-                    'format' => 'raw', // Render the output as raw HTML
-                    'filter' => ['1' => 'ADMINISTRATOR','2' => 'FLEET','3' => 'NARSCO'],
-                    'value' => function ($model) {
-                        $badge = 'info';
-                        $text = 'Pengguna';
-
-                        if ($model->type === 1) {
-                            $badge = 'primary';
-                            $text = 'Admin';
-                        }
-
-                        return '<span class="right badge badge-' . $badge . '">' . $text . '</span>';
-                    },
-                ],
+                'modul',
                 [
                     'attribute' => 'status',
                     'label' => 'Status',
@@ -69,23 +51,23 @@ $this->params['breadcrumbs'][] = $this->title;
                         return '<span class="right badge badge-' . $badge . '">' . $text . '</span>';
                     },
                 ],
-                [
-                    'label' => '',
-                    'format' => 'raw',
-                    'value' => function ($model) {
-                        return Html::a('<i class="fas fa-edit"></i>', Url::to(['users/view', 'id' => $model->id]), ['class' => 'btn btn-primary btn-xs']);
-                    }
-                ],
-                [
-                    'label' => '',
-                    'format' => 'raw',
-                    'value' => function ($model) {
-                        return Html::a('<i class="fas fa-trash"></i>', Url::to(['users/delete', 'id' => $model->id]), ['class' => 'btn btn-danger btn-xs', 'data' => [
-                            'confirm' => 'Anda pasti untuk membuang pengguna ini ?',
-                            'method' => 'post',
-                        ],]);
-                    }
-                ]
+                // [
+                //     'label' => '',
+                //     'format' => 'raw',
+                //     'value' => function ($model) {
+                //         return Html::a('<i class="fas fa-edit"></i>', Url::to(['users/view', 'id' => $model->id]), ['class' => 'btn btn-primary btn-xs']);
+                //     }
+                // ],
+                // [
+                //     'label' => '',
+                //     'format' => 'raw',
+                //     'value' => function ($model) {
+                //         return Html::a('<i class="fas fa-trash"></i>', Url::to(['users/delete', 'id' => $model->id]), ['class' => 'btn btn-danger btn-xs', 'data' => [
+                //             'confirm' => 'Anda pasti untuk membuang pengguna ini ?',
+                //             'method' => 'post',
+                //         ],]);
+                //     }
+                // ]
 
             ],
         ]); ?>

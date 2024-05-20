@@ -61,12 +61,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
                 'maks',
                 'pengurus',
-                [
-                    'class' => ActionColumn::className(),
-                    'urlCreator' => function ($action, TblSukan $model, $key, $index, $column) {
-                        return Url::toRoute([$action, 'id' => $model->id]);
-                    }
-                ],
+                // [
+                //     'class' => ActionColumn::className(),
+                //     'urlCreator' => function ($action, TblSukan $model, $key, $index, $column) {
+                //         return Url::toRoute([$action, 'id' => $model->id]);
+                //     }
+                // ],
 
             ],
             'pager' => [

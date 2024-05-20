@@ -18,10 +18,8 @@ use yii\widgets\ActiveForm;
     <?= $form->errorSummary($model); ?>
 
     <?= $form->field($model, 'fullname')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'no_sps')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'icno')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'type')->dropDownList([ '1' => 'ADMINISTRATOR','2' => 'FLEET','3' => 'NARSCO']) ?>
 
     <?= $form->field($model, 'status')->dropDownList([ '1' => 'Aktif','0' => 'Tidak Aktif',]) ?>
 

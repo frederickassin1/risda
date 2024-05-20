@@ -58,6 +58,9 @@ error_reporting(0);
                         'visible' => (Yii::$app->user->identity->type == 1) ? true : false,
                         'items' => [
                             ['label' => 'Senarai Pengguna', 'url' => ['admin/user-list'], 'icon' => 'users'],
+                            ['label' => 'Senarai Penerima Baja', 'url' => ['admin/receipent-list'], 'icon' => 'users'],
+                            ['label' => 'SPS GROUP', 'url' => ['admin/sps-list'], 'icon' => 'users'],
+                            ['label' => 'Modul', 'url' => ['admin/modul-list'], 'icon' => 'users'],
                           
                         ],
                     ],
