@@ -5,14 +5,13 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\models\TblUsers $model */
 
-$this->title = 'Kemaskini Sukan: ' . $model->nama;
-$this->params['breadcrumbs'][] = ['label' => 'Senarai Sukan', 'url' => ['index']];
-$this->params['breadcrumbs'][] = 'Kemaskini';
+$this->title = 'Tambah Rekod';
+$this->params['breadcrumbs'][] = ['label' => 'Senarai Penguna', 'url' => ['admin/user-list']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-
 <div class="card card-primary card-outline heavy">
     <div class="card-header">
-        <h3 class="card-title"><i class="fas fa-user"></i>&nbsp;<?= Html::encode($this->title) ?></h3>
+        <h3 class="card-title"><i class="fas fa-user"></i>&nbsp;<?= Html::encode($this->title) ?></small></h3>
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
@@ -20,10 +19,7 @@ $this->params['breadcrumbs'][] = 'Kemaskini';
         </div>
     </div>
     <div class="card-body">
-        <p>
-            <?= Html::a('<i class="fas fa-undo"></i>&nbsp;Kembali', ['index'], ['class' => 'btn btn-default']) ?>
-        </p>
-        <?= $this->render('_form', [
+        <?= $this->render('_records', [
             'model' => $model,
         ]) ?>
 

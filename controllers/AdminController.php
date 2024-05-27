@@ -35,6 +35,7 @@ use app\models\TblPenerimaBaja;
 use app\models\TblPenerimaBajaSearch;
 use app\models\TblPenyertaan;
 use app\models\TblRecordsAdmin;
+use app\models\TblRecordsAdminSearch;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 use kartik\mpdf\Pdf;
@@ -110,6 +111,16 @@ class AdminController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+    public function actionRecordList()
+    {
+        $searchModel = new TblRecordsAdminSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
+
+        return $this->render('record-list', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
     public function actionCreateSps()
     {
         $model = new RefSpsGroup();
@@ -169,7 +180,7 @@ class AdminController extends Controller
         ]);
     }
     //add new records
-    public function actionAddRecords()
+    public function actionAddRecords($sps_grp = null,$date = null)
     {
         $model = new TblRecordsAdmin();
 
@@ -185,5 +196,6 @@ class AdminController extends Controller
             'model' => $model,
         ]);
     }
+    // public function action
 
 }

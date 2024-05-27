@@ -116,17 +116,24 @@ class TblUsers extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
      */
     public function beforeSave($insert)
     {
-        $default = "SUKUM@2024";
+        // Define a default password
+        $defaultPassword = "RISDA@2024";
+    
+        // Get user input (this assumes that the password is provided via a form input)
+        $userInputPassword = $this->password; // Adjust this line based on how the password is passed in
+    
+        // Use the user-provided password if available, otherwise use the default
+        $passwordToHash = !empty($userInputPassword) ? $userInputPassword : $defaultPassword;
+    
         if (parent::beforeSave($insert)) {
             if ($this->isNewRecord || $this->isAttributeChanged('password')) {
                 // Hash the password before saving
-                $this->password = Yii::$app->security->generatePasswordHash($default);
+                $this->password = Yii::$app->security->generatePasswordHash($passwordToHash);
             }
             return true;
         }
         return false;
     }
-
     public static function findIdentity($id)
     {
         return self::findOne(['email' => $id, 'status' => 1]);
@@ -240,4 +247,5 @@ class TblUsers extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
             return 'Pengguna Biasa';
         }
     }
+   
 }

@@ -5,6 +5,7 @@ namespace app\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\TblRecordsAdmin;
+use yii\helpers\VarDumper;
 
 /**
  * TblRecordsAdminSearch represents the model behind the search form of `app\models\TblRecordsAdmin`.
@@ -14,11 +15,17 @@ class TblRecordsAdminSearch extends TblRecordsAdmin
     /**
      * {@inheritdoc}
      */
+    public $sps_group; // Add a new attribute for searching ]
+    public $sps_no; // Add a new attribute for searching ]
+    public $modul; // Add a new attribute for searching 
+    public $nama; // Add a new attribute for searching on nama_pekebun (a related field)
+
     public function rules()
     {
         return [
             [['id', 'rp', 'r1', 'r4', 'jum_baja', 'fleet_rp', 'fleet_r1', 'fleet_r4', 'fleet_jum_baja'], 'integer'],
-            [['tarikh_sps', 'no_sps_42', 'no_sps_40', 'modul', 'nama_pekebun', 'nama_ppr', 'status', 'fleet_tarikh_terima', 'fleet_tarikh_bekalan', 'added_by', 'added_dt', 'update_by', 'update_dt'], 'safe'],
+            // [['', 'sps_no','modul','nama'],'safe'],
+            [['sps_group','tarikh_sps', 'no_sps_42', 'no_sps_40', 'modul', 'nama_pekebun', 'nama_ppr', 'status', 'fleet_tarikh_terima', 'fleet_tarikh_bekalan', 'added_by', 'added_dt', 'update_by', 'update_dt'], 'safe'],
         ];
     }
 
@@ -41,6 +48,10 @@ class TblRecordsAdminSearch extends TblRecordsAdmin
     public function search($params)
     {
         $query = TblRecordsAdmin::find();
+        $query->joinWith(['sgroup']);
+        $query->joinWith(['pekebun as p']);
+        $query->joinWith(['pekebun as f']);
+        // $query->joinWith(['pekebun as p']);
 
         // add conditions that should always apply here
 
@@ -72,16 +83,19 @@ class TblRecordsAdminSearch extends TblRecordsAdmin
             'added_dt' => $this->added_dt,
             'update_dt' => $this->update_dt,
         ]);
-
+        // VarDumper::dump( $params, $depth = 10, $highlight = true);die;
         $query->andFilterWhere(['like', 'tarikh_sps', $this->tarikh_sps])
-            ->andFilterWhere(['like', 'no_sps_42', $this->no_sps_42])
-            ->andFilterWhere(['like', 'no_sps_40', $this->no_sps_40])
+            // ->andFilterWhere(['like', 'no_sps_42', $this->no_sps_42])
+            // ->andFilterWhere(['like', 'no_sps_40', $this->no_sps_40])
             ->andFilterWhere(['like', 'modul', $this->modul])
-            ->andFilterWhere(['like', 'nama_pekebun', $this->nama_pekebun])
+            // ->andFilterWhere(['like', 'nama_pekebun', $this->nama_pekebun])
             ->andFilterWhere(['like', 'nama_ppr', $this->nama_ppr])
             ->andFilterWhere(['like', 'status', $this->status])
             ->andFilterWhere(['like', 'added_by', $this->added_by])
-            ->andFilterWhere(['like', 'update_by', $this->update_by]);
+            ->andFilterWhere(['like', 'update_by', $this->update_by])
+            ->andFilterWhere(['like', 'ref_sps_group.sps_group', $this->no_sps_42])
+            ->andFilterWhere(['like', 'f.fullname', $this->no_sps_40])
+            ->andFilterWhere(['like', 'p.no_sps', $this->no_sps_40]);
 
         return $dataProvider;
     }

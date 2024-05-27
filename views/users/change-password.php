@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
+$model->password = '';
 ?>
 
 <div class="alert alert-danger">
@@ -21,12 +22,12 @@ use yii\bootstrap4\ActiveForm;
     </div>
     <div class="card-body">
         <?php $form = ActiveForm::begin(); ?>
-        <?= $form->field($model, 'current_password')->passwordInput(['maxlength' => true, 'autocomplete' => false])->label('Kata Laluan Semasa'); ?>
-        <?= $form->field($model, 'password')->passwordInput(['maxlength' => true, 'autocomplete' => false])->label('Kata Laluan Baharu'); ?>
+        <?= $form->field($model, 'current_password')->passwordInput(['maxlength' => true, 'autocomplete' => 'off'])->label('Kata Laluan Semasa'); ?>
+        <?= $form->field($model, 'password')->passwordInput(['maxlength' => true, 'autocomplete' => 'off'])->label('Kata Laluan Baharu'); ?>
         <?= $form->field($model, 'password_repeat')->passwordInput(['maxlength' => true, 'autocomplete' => 'off'])->label('Ulang Kata Laluan Baharu'); ?>
 
         <div class="form-group">
-            <?= html::resetButton('Reset', ['class' => 'btn btn-danger']); ?>
+            <?= Html::resetButton('Reset', ['class' => 'btn btn-danger']); ?>
             <?= Html::submitButton('Tukar Kata Laluan', ['class' => 'btn btn-primary']) ?>
         </div>
 

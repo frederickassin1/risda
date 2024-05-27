@@ -75,7 +75,9 @@ class SiteController extends Controller
     public function actionIndex()
     {
 
-        $id = Yii::$app->user->identity->id;
+        $id = Yii::$app->user->identity;
+        // VarDumper::dump($id->password);die;
+        Yii::$app->passwordPolicy->checkDefaultPassword($id->password);
 
         return $this->render('index', []);
     }

@@ -85,4 +85,24 @@ class TblRecordsAdmin extends \yii\db\ActiveRecord
             'update_dt' => 'Update Dt',
         ];
     }
+    public function getSgroup()
+    {
+        return $this->hasOne(RefSpsGroup::className(), ['id' => 'no_sps_42']);
+    }
+    public function getSmodul()
+    {
+        return $this->hasOne(RefModul::className(), ['id' => 'modul']);
+    }
+    public function getPekebun()
+    {
+        return $this->hasOne(TblPenerimaBaja::className(), ['id' => 'no_sps_40']);
+    }
+    public function getAdmin()
+    {
+        return $this->hasOne(TblUsers::className(), ['id' => 'added_by']);
+    }
+    public function getSps()
+    {
+        return $this->hasOne(RefSpsGroup::className(), ['sps_group' => 'no_sps_42']);
+    }
 }
