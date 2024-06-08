@@ -13,9 +13,9 @@ use yii\helpers\Html;
         <li class="nav-item d-none d-sm-inline-block">
             <a href="<?= \yii\helpers\Url::home() ?>" class="nav-link"><i class="fas fa-home"></i></a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <?= Html::a('Hubungi Kami', ['/site/contact-us'], ['class' => 'nav-link']) ?>
-        </li>
+        </li> -->
     </ul>
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">

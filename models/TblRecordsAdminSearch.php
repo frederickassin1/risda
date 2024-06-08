@@ -49,8 +49,9 @@ class TblRecordsAdminSearch extends TblRecordsAdmin
     {
         $query = TblRecordsAdmin::find();
         $query->joinWith(['sgroup']);
-        $query->joinWith(['pekebun as p']);
-        $query->joinWith(['pekebun as f']);
+        // $query->joinWith(['pekebun as p']);
+        $query->joinWith(['smodul']);
+        $query->joinWith(['pekebun']);
         // $query->joinWith(['pekebun as p']);
 
         // add conditions that should always apply here
@@ -87,15 +88,17 @@ class TblRecordsAdminSearch extends TblRecordsAdmin
         $query->andFilterWhere(['like', 'tarikh_sps', $this->tarikh_sps])
             // ->andFilterWhere(['like', 'no_sps_42', $this->no_sps_42])
             // ->andFilterWhere(['like', 'no_sps_40', $this->no_sps_40])
-            ->andFilterWhere(['like', 'modul', $this->modul])
-            // ->andFilterWhere(['like', 'nama_pekebun', $this->nama_pekebun])
+            // ->andFilterWhere(['like', 'modul', $this->modul])
+            ->andFilterWhere(['like', 'nama_pekebun', $this->nama_pekebun])
             ->andFilterWhere(['like', 'nama_ppr', $this->nama_ppr])
-            ->andFilterWhere(['like', 'status', $this->status])
+            ->andFilterWhere(['like', 'tbl_records_admin.status', $this->status])
             ->andFilterWhere(['like', 'added_by', $this->added_by])
             ->andFilterWhere(['like', 'update_by', $this->update_by])
             ->andFilterWhere(['like', 'ref_sps_group.sps_group', $this->no_sps_42])
-            ->andFilterWhere(['like', 'f.fullname', $this->no_sps_40])
-            ->andFilterWhere(['like', 'p.no_sps', $this->no_sps_40]);
+            ->andFilterWhere(['like', 'ref_modul.modul', $this->modul])
+            ->andFilterWhere(['like', 'tbl_penerima_baja.no_sps', $this->no_sps_40]);
+            // ->andFilterWhere(['like', 'f.fullname', $this->no_sps_40])
+            // ->andFilterWhere(['like', 'p.no_sps', $this->no_sps_40]);
 
         return $dataProvider;
     }

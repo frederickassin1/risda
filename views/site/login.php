@@ -11,7 +11,7 @@ use yii\helpers\Url;
 
         <div class="card card-outline card-info">
             <div class="card-header text-center">
-                <a href="<?= Yii::$app->homeUrl ?>" class="h1"><b>Supply Monitoring System</b></a>
+                <a href="<?= Yii::$app->homeUrl ?>" class="h3"><b>Supply Monitoring System (SMS)</b></a>
 
 
 
@@ -63,13 +63,13 @@ use yii\helpers\Url;
                 <hr>
                    
 
-                    <p class="mb-1 float-left">
+                    <!-- <p class="mb-1 float-left">
                         <?= Html::a('Lupa Kata Laluan', Url::to(['site/forgot-password'])) ?>
-                    </p>
+                    </p> -->
 
-                    <p class="mb-1 float-right">
+                    <!-- <p class="mb-1 float-right">
                         <?= Html::a('<span class="fas fa-book"></span>&nbsp;Manual Pengguna', Url::to('@web/public/MANUAL PENGGUNA SISTEM.pdf', true), ['class' => 'btn btn-info btn-sm', 'target' => '_blank']) ?>
-                    </p>
+                    </p> -->
                 </div>
             </div>
 

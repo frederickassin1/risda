@@ -1,6 +1,7 @@
 <?php
 
 use app\models\TblUsers;
+use kartik\date\DatePicker;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -33,7 +34,22 @@ $this->params['breadcrumbs'][] = $this->title;
             'tableOptions' => ['class' => 'table table-striped table-sm table-bordered'],
             'columns' => [
                 ['class' => 'yii\grid\SerialColumn'],
-                'tarikh_sps',
+                // 'tarikh_sps',
+                [
+                    'attribute' => 'tarikh_sps',
+                    'filter' => DatePicker::widget([
+                        'model' => $searchModel,
+                        'attribute' => 'tarikh_sps',
+                        'type' => DatePicker::TYPE_COMPONENT_PREPEND,
+                        'value' => date('Y-m-d'),
+                        'pluginOptions' => [
+                            'autoclose' => true,
+                            'format' => 'yyyy-mm-dd',
+                            'todayHighlight' => true
+                        ]
+                    ]),
+                    'format' => 'html',
+                ],
                 // 'sgroup.sps_group',
              
                 [
@@ -47,13 +63,16 @@ $this->params['breadcrumbs'][] = $this->title;
                     'value' => 'pekebun.no_sps',
                 ],
                 // 'pekebun.no_sps',
-                'smodul.modul',
                 [
-                    'attribute' => 'no_sps_40',
-                    'label' => 'Pekebun',
-                    'value' => 'pekebun.fullname',
-                ],
-                'pekebun.fullname',
+                    'attribute' => 'modul',
+                    'label' => 'Modul',
+                    'value' => 'smodul.modul',
+                ],                // [
+                //     'attribute' => 'no_sps_40',
+                //     'label' => 'Pekebun',
+                //     'value' => 'pekebun.fullname',
+                // ],
+                'nama_pekebun',
                 // 'admin.fullname',
                 // [
                 //     'attribute' => 'status',
@@ -66,16 +85,16 @@ $this->params['breadcrumbs'][] = $this->title;
                     'attribute' => 'status',
                     'label' => 'Status',
                     'format' => 'raw',
-                    'filter' => ['0' => 'ENTRY', '1' => 'DONE','2'=> 'TRANSIT'],
+                    'filter' => ['0' => 'IN STOCK', '1' => 'DONE','2'=> 'TRANSIT'],
                     'value' => function ($model) {
                         $badge = 'info';
-                        $text = 'Entry';
+                        $text = 'In Stock';
 
-                        if ($model->status === 1) {
+                        if ($model->status == 1) {
                             $badge = 'success';
                             $text = 'Done';
                         }
-                        if ($model->status === 2) {
+                        if ($model->status == 2) {
                             $badge = 'danger';
                             $text = 'transit';
                         }

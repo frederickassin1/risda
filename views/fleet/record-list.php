@@ -1,6 +1,7 @@
 <?php
 
 use app\models\TblUsers;
+use kartik\date\DatePicker;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -24,26 +25,48 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
     <div class="card-body">
-        <p>
-            <?= Html::a('<i class="fas fa-plus"></i>&nbsp;Tambah Rekod', ['admin/add-records'], ['class' => 'btn btn-success']) ?>
-        </p>
+        
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
             'tableOptions' => ['class' => 'table table-striped table-sm table-bordered'],
             'columns' => [
                 ['class' => 'yii\grid\SerialColumn'],
-                'tarikh_sps',
-                // 'sgroup.sps_group',
+                [
+                    'attribute' => 'tarikh_sps',
+                    'filter' => DatePicker::widget([
+                        'model' => $searchModel,
+                        'attribute' => 'tarikh_sps',
+                        'type' => DatePicker::TYPE_COMPONENT_PREPEND,
+                        'value' => date('Y-m-d'),
+                        'pluginOptions' => [
+                            'autoclose' => true,
+                            'format' => 'yyyy-mm-dd',
+                            'todayHighlight' => true
+                        ]
+                    ]),
+                    'format' => 'html',
+                ],                // 'sgroup.sps_group',
              
                 [
                     'attribute' => 'no_sps_42',
-                    'label' => 'SGroup',
+                    'label' => 'No SPS 42',
                     'value' => 'sgroup.sps_group',
                 ],
-                'pekebun.no_sps',
-                'smodul.modul',
-                'pekebun.fullname',
+                [
+                    'attribute' => 'no_sps_40',
+                    'label' => 'No SPS 40',
+                    'value' => 'pekebun.no_sps',
+                ],
+                [
+                    'attribute' => 'modul',
+                    'label' => 'Modul',
+                    'value' => 'smodul.modul',
+                ],
+                // 'smodul.modul',
+                // 'pekebun.fullname',
+                'nama_pekebun',
+
                 // 'admin.fullname',
                 // [
                 //     'attribute' => 'status',
@@ -56,16 +79,16 @@ $this->params['breadcrumbs'][] = $this->title;
                     'attribute' => 'status',
                     'label' => 'Status',
                     'format' => 'raw',
-                    'filter' => ['0' => 'ENTRY', '1' => 'DONE','2'=> 'TRANSIT'],
+                    'filter' => ['0' => 'IN STOCK', '1' => 'DONE','2'=> 'TRANSIT'],
                     'value' => function ($model) {
                         $badge = 'info';
-                        $text = 'Entry';
+                        $text = 'In Stock';
 
-                        if ($model->status === 1) {
+                        if ($model->status == 1) {
                             $badge = 'success';
                             $text = 'Done';
                         }
-                        if ($model->status === 2) {
+                        if ($model->status == 2) {
                             $badge = 'danger';
                             $text = 'transit';
                         }
@@ -73,13 +96,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         return '<span class="right badge badge-' . $badge . '">' . $text . '</span>';
                     },
                 ],
-                // [
-                //     'label' => '',
-                //     'format' => 'raw',
-                //     'value' => function ($model) {
-                //         return Html::a('<i class="fas fa-edit"></i>', Url::to(['users/view', 'id' => $model->id]), ['class' => 'btn btn-primary btn-xs']);
-                //     }
-                // ],
+                [
+                    'label' => 'Tindakan',
+                    'format' => 'raw',
+                    'value' => function ($model) {
+                        return Html::a('<i class="fas fa-edit"></i>', Url::to(['fleet/update', 'id' => $model->id]), ['class' => 'btn btn-primary btn-xs']);
+                    }
+                ],
                 // [
                 //     'label' => '',
                 //     'format' => 'raw',

@@ -2,10 +2,11 @@
 
 $this->title = 'Home';
 $this->params['breadcrumbs'][] = $this->title;
+// var_dump($admin_rp);die;
 ?>
 <div class="container-fluid">
 
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
                 <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
@@ -59,13 +60,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
         </div>
 
-    </div>
+    </div> -->
 
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">Monthly Recap Report</h5>
+                    <h5 class="card-title">Ringkasan Data </h5>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>
@@ -74,48 +75,75 @@ $this->params['breadcrumbs'][] = $this->title;
                             <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
                                 <i class="fas fa-wrench"></i>
                             </button>
-                            <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                <a href="#" class="dropdown-item">Action</a>
-                                <a href="#" class="dropdown-item">Another action</a>
-                                <a href="#" class="dropdown-item">Something else here</a>
-                                <a class="dropdown-divider"></a>
-                                <a href="#" class="dropdown-item">Separated link</a>
-                            </div>
+
                         </div>
-                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                        <!-- <button type="button" class="btn btn-tool" data-card-widget="remove">
                             <i class="fas fa-times"></i>
-                        </button>
+                        </button> -->
                     </div>
                 </div>
 
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-8">
-                            <p class="text-center">
+                        <div class="col-md-12">
+                            <!-- <p class="text-center">
                                 <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
-                            </p>
+                            </p> -->
                             <div class="chart">
-                                <div class="chartjs-size-monitor">
-                                    <div class="chartjs-size-monitor-expand">
-                                        <div class=""></div>
-                                    </div>
-                                    <div class="chartjs-size-monitor-shrink">
-                                        <div class=""></div>
-                                    </div>
-                                </div>
+                                <table class="table table-sm table-bordered jambo_table table-striped">
+                                    <thead>
+                                        <tr class="headings">
+                                            <th style="width:auto; text-align:center;" rowspan="3">BAJA</th>
+                                            <th style="width:auto; text-align:center;" rowspan="3">JUMLAH BAJA SPS40 (RISDA)</th>
+                                            <th style="width: auto; text-align:center;" rowspan="3">SUDAH BEKAL (FLEET)</th>
+                                            <th style="width: auto; text-align:center;" rowspan="3">TRANSIT (FLEET)</th>
+                                            <th style="width: auto; text-align:center;" rowspan="3">BELUM BEKAL</th>
+                                            <th style="width: auto; text-align:center;" rowspan="3">BAJA DI STOR (NARSCO)</th>
 
-                                <canvas id="salesChart" height="360" style="height: 180px; display: block; width: 572px;" width="1144" class="chartjs-render-monitor"></canvas>
+                                        </tr>
+
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="text-align: center;">RP</td>
+                                            <td style="text-align: center;"><?= $rp ?></td>
+                                            <td style="text-align: center;"><?= $f_rp == NULL ? '0' : $f_rp  ?></td>
+                                            <td style="text-align: center;"><?= $t_rp == NULL ? '0' : $t_rp ?></td>
+                                            <td style="text-align: center;"><?= $rp - ($f_rp + $t_rp) ?></td>
+                                            <td style="text-align: center;"><?= $in_stor->rp_baki ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center;">R1</td>
+                                            <td style="text-align: center;"><?= $r1 ?></td>
+                                            <td style="text-align: center;"><?= $f_r1  == NULL ? '0' : $f_r1 ?></td>
+                                            <td style="text-align: center;"><?= $t_r1 == NULL ? '0' : $t_r1 ?></td>
+                                            <td style="text-align: center;"><?= $r1 - ($f_r1 + $t_r1) ?></td>
+                                            <td style="text-align: center;"><?= $in_stor->r1_baki ?></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center;">R4</td>
+                                            <td style="text-align: center;"><?= $r4 ?></td>
+                                            <td style="text-align: center;"><?= $f_r4  == NULL ? '0' : $f_r4 ?></td>
+                                            <td style="text-align: center;"><?= $t_r4 == NULL ? '0' : $t_r4 ?></td>
+                                            <td style="text-align: center;"><?= $r4 - ($f_r4 + $t_r4) ?></td>
+                                            <td style="text-align: center;"><?= $in_stor->r4_baki ?></td>
+
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
                             </div>
 
                         </div>
 
-                        <div class="col-md-4">
+                        <!-- <div class="col-md-4">
                             <p class="text-center">
-                                <strong>Goal Completion</strong>
+                                <strong>Baja Yang Selesai Di Hantar</strong>
                             </p>
                             <div class="progress-group">
                                 Add Products to Cart
-                                <span class="float-right"><b>160</b>/200</span>
                                 <div class="progress progress-sm">
                                     <div class="progress-bar bg-primary" style="width: 80%"></div>
                                 </div>
@@ -145,13 +173,13 @@ $this->params['breadcrumbs'][] = $this->title;
                                 </div>
                             </div>
 
-                        </div>
+                        </div> -->
 
                     </div>
 
                 </div>
 
-                <div class="card-footer">
+                <!-- <div class="card-footer">
                     <div class="row">
                         <div class="col-sm-3 col-6">
                             <div class="description-block border-right">
@@ -190,7 +218,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                     </div>
 
-                </div>
+                </div> -->
 
             </div>
 

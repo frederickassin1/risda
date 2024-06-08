@@ -9,6 +9,7 @@ use yii\widgets\ActiveForm;
 /** @var yii\web\View $this */
 /** @var app\models\TblUsers $model */
 /** @var yii\widgets\ActiveForm $form */
+$model->status = 1;
 ?>
 
 <div class="tbl-users-form">
@@ -19,7 +20,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'fullname')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'no_sps')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'icno')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'status')->dropDownList([ '1' => 'Aktif','0' => 'Tidak Aktif',]) ?>
 

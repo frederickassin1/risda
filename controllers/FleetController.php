@@ -61,7 +61,7 @@ class FleetController extends Controller
                             'roles' => ['@'], // Logged in users
                             'matchCallback' => function ($rule, $action) {
                                 $user = Yii::$app->user->identity;
-                                return $user && $user->type == 1; // Ensure the user is an admin
+                                return $user && ($user->type == 1 || $user->type == 2); // Ensure the user is an admin
                             }
                         ],
                     ],
@@ -70,11 +70,8 @@ class FleetController extends Controller
                     },
                 ],
                 'verbs' => [
-                    'class' => VerbFilter::class,
-                    'actions' => [
-                        'reset-penilaian' => ['POST'],
-                        // 'subjawatans' => ['POST'],
-                    ],
+                    'class' => VerbFilter::className(),
+                    'actions' => [],
                 ],
             ]
         );
@@ -92,7 +89,37 @@ class FleetController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
-   
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
+        // $model->scenario = 'update';
+
+        $user_id = Yii::$app->user->identity->id;
+
+        if ($this->request->isPost && $model->load($this->request->post())) {
+
+            $model->update_dt = date('Y-m-d H:i:s');
+            $model->update_by = $user_id;
+
+            if ($model->save(false)) {
+                Yii::$app->session->setFlash('success', 'Rekod telah berjaya dikemaskini');
+                return $this->redirect(['record-list', 'id' => $model->id]);
+            }
+        }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
+    }
+    protected function findModel($id)
+    {
+        if (($model = TblRecordsAdmin::findOne(['id' => $id])) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
     // //add new records
     // public function actionAddRecords($sps_grp = null,$date = null)
     // {

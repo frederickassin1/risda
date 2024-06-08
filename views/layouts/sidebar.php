@@ -12,7 +12,7 @@ error_reporting(0);
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="opacity: .9;">
     <!-- Brand Logo -->
-    <a href="index" class="brand-link">
+    <a href="#" class="brand-link">
         <?php //echo Html::img('@web/images/ums-logo-white.png', ['class' => 'brand-image', 'style' => 'width:100px']); 
         ?>
         <span class="brand-text">Supply Monitoring System</span>
@@ -82,10 +82,26 @@ error_reporting(0);
 
                         // Assuming this is within a widget configuration or similar context
 
-                        'visible' => (Yii::$app->user->identity->type == 1) && !Yii::$app->passwordPolicy->checkPassword(Yii::$app->user->identity->password),
+                        'visible' => (Yii::$app->user->identity->type == 1 || Yii::$app->user->identity->type == 2) && !Yii::$app->passwordPolicy->checkPassword(Yii::$app->user->identity->password),
                         'items' => [
                            
                             ['label' => 'Rekod Penerima Baja', 'url' => ['fleet/record-list'], 'icon' => 'list'],
+
+                        ],
+                    ],
+                    [
+                        'label' => 'Narsco',
+                        'icon' => 'users-cog',
+                        // $id = Yii::$app->user->identity;
+                        // // VarDumper::dump($id->password);die;
+                        // Yii::$app->passwordPolicy->checkDefaultPassword(Yii::$app->user->identity->password);
+
+                        // Assuming this is within a widget configuration or similar context
+
+                        'visible' => (Yii::$app->user->identity->type == 1 || Yii::$app->user->identity->type == 3) && !Yii::$app->passwordPolicy->checkPassword(Yii::$app->user->identity->password),
+                        'items' => [
+                           
+                            ['label' => 'Rekod ', 'url' => ['narsco/record-list'], 'icon' => 'list'],
 
                         ],
                     ],

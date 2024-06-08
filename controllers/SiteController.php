@@ -13,9 +13,12 @@ use app\models\pml\RefAkses;
 use app\models\ResetPasswordForm;
 use app\models\Ref_Kategori;
 use app\models\RefSukan;
+use app\models\TblInoutBaja;
+use app\models\TblJumBaja;
 use app\models\TblPenginapan;
 use app\models\TblPenyertaan;
 use app\models\TblPenyertaanSearch;
+use app\models\TblRecordsAdmin;
 use app\models\TblSetup;
 use InvalidArgumentException;
 use yii\helpers\VarDumper;
@@ -78,8 +81,28 @@ class SiteController extends Controller
         $id = Yii::$app->user->identity;
         // VarDumper::dump($id->password);die;
         Yii::$app->passwordPolicy->checkDefaultPassword($id->password);
-
-        return $this->render('index', []);
+        $model = TblJumBaja::find()->where(['YEAR(added_dt)' => date('Y')])->orderBy(['added_dt' => SORT_DESC])->one();
+        $admin_rp = TblRecordsAdmin::find()->where(['YEAR(tarikh_sps)' => date('Y')]);
+        $done = TblRecordsAdmin::find()->where(['YEAR(tarikh_sps)' => date('Y'),'status' => 1]);
+        $transit = TblRecordsAdmin::find()->where(['YEAR(tarikh_sps)' => date('Y'),'status' => 2]);
+        $in_stor = TblInoutBaja::find()->where(['YEAR(added_dt)' => date('Y')])->orderBy(['added_dt' => SORT_DESC])->one();
+        // var_dump( $done->sum('rp'));die;
+        // $admin_r1 = TblRecordsAdmin::find()->where(['YEAR(tarikh_sps)' => date('Y')])->sum('r1');
+        // $admin_r4 = TblRecordsAdmin::find()->where(['YEAR(tarikh_sps)' => date('Y')])->sum('r4');
+        // $fleet_rp = TblRecordsAdmin::find()->where(['YEAR(tarikh_sps)' => date('Y')])->sum('fleet_rp');
+        return $this->render('index', [
+            'model' => $model,
+            'rp' => $admin_rp->sum('rp'),
+            'r1' => $admin_rp->sum('r1'),
+            'r4' => $admin_rp->sum('r4'),
+            'f_rp' => $done->sum('rp'),
+            'f_r1' => $done->sum('r1'),
+            'f_r4' => $done->sum('r4'),
+            't_rp' => $transit->sum('rp'),
+            't_r1' => $transit->sum('r1'),
+            't_r4' => $transit->sum('r4'),
+            'in_stor' => $in_stor
+        ]);
     }
 
     /**
@@ -127,10 +150,6 @@ class SiteController extends Controller
         return $this->render('contact-us', []);
     }
 
-    
-    public function actionAddAthlete($id){
-        
-    }
-
+   
     
 }

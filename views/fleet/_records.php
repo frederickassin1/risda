@@ -10,9 +10,9 @@ use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 
-$model->rp = 0;
-$model->r1 = 0;
-$model->r4 = 0;
+// $model->rp = 0;
+// $model->r1 = 0;
+// $model->r4 = 0;
 ?>
 
 <div class="ref-kategori-form">
@@ -24,7 +24,7 @@ $model->r4 = 0;
             <?=
             $form->field($model, 'tarikh_sps')->widget(DatePicker::classname(), [
                 'options' => ['placeholder' => 'Enter sps date ...'],
-                // 'disabled' => true,
+                'disabled' => true,
 
                 'pluginOptions' => [
                     'autoclose' => true,
@@ -43,7 +43,9 @@ $model->r4 = 0;
             $form->field($model, 'no_sps_42')->label(false)->widget(Select2::classname(), [
                 'data' => ArrayHelper::map(RefSpsGroup::find()->where(['status' => 1])->all(), 'id', 'sps_group'),
                 'options' => ['placeholder' => 'Pilih SPS 42', 'class' => 'form-control col-md-7 col-xs-12'],
-                'pluginOptions' => ['allowClear' => true]
+                'pluginOptions' => ['allowClear' => true],
+                'disabled' => true,
+
             ]);
             ?>
 
@@ -59,7 +61,9 @@ $model->r4 = 0;
                     return $model->fullname . '( ' . $model->no_sps . ' )';
                 }),
                 'options' => ['placeholder' => 'Pilih SPS 40', 'class' => 'form-control col-md-7 col-xs-12'],
-                'pluginOptions' => ['allowClear' => true]
+                'pluginOptions' => ['allowClear' => true],
+                'disabled' => true,
+
             ]);
             ?>
         </div>
@@ -71,7 +75,9 @@ $model->r4 = 0;
             $form->field($model, 'modul')->label(false)->widget(Select2::classname(), [
                 'data' => ArrayHelper::map(RefModul::find()->where(['status' => 1])->all(), 'id', 'modul'),
                 'options' => ['placeholder' => 'Pilih modul', 'class' => 'form-control col-md-7 col-xs-12'],
-                'pluginOptions' => ['allowClear' => true]
+                'pluginOptions' => ['allowClear' => true],
+                'disabled' => true,
+
             ]);
             ?>
 
@@ -80,7 +86,7 @@ $model->r4 = 0;
     <div class="form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12">RP: <span class="required" style="color:red;">*</span></label>
         <div class="col-md-12 col-sm-12 col-xs-12">
-        <?= $form->field($model, 'rp')->label(false)->textInput(['disabled' => false]) ?>
+        <?= $form->field($model, 'rp')->label(false)->textInput(['disabled' => true]) ?>
 
        
         </div>
@@ -89,7 +95,7 @@ $model->r4 = 0;
     <div class="form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12">R1: <span class="required" style="color:red;">*</span></label>
         <div class="col-md-12 col-sm-12 col-xs-12">
-        <?= $form->field($model, 'r1')->label(false)->textInput(['disabled' => false]) ?>
+        <?= $form->field($model, 'r1')->label(false)->textInput(['disabled' => true]) ?>
 
        
         </div>
@@ -97,7 +103,7 @@ $model->r4 = 0;
     <div class="form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12">R4: <span class="required" style="color:red;">*</span></label>
         <div class="col-md-12 col-sm-12 col-xs-12">
-        <?= $form->field($model, 'r4')->label(false)->textInput(['disabled' => false]) ?>
+        <?= $form->field($model, 'r4')->label(false)->textInput(['disabled' => true]) ?>
 
        
         </div>

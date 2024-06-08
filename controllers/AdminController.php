@@ -55,6 +55,7 @@ class AdminController extends Controller
             [
                 'access' => [
                     'class' => AccessControl::class,
+                    'only' => ['*'],
                     'rules' => [
                         [
                             'allow' => true,
@@ -73,7 +74,6 @@ class AdminController extends Controller
                     'class' => VerbFilter::class,
                     'actions' => [
                         'reset-penilaian' => ['POST'],
-                        // 'subjawatans' => ['POST'],
                     ],
                 ],
             ]
@@ -180,13 +180,19 @@ class AdminController extends Controller
         ]);
     }
     //add new records
-    public function actionAddRecords($sps_grp = null,$date = null)
+    public function actionAddRecords($sps_grp = null, $date = null)
     {
         $model = new TblRecordsAdmin();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+
+                $pekebun = TblPenerimaBaja::findOne(['id' => $model->no_sps_42]);
+                // var_dump($model->no_sps_42);die;
+                $model->nama_pekebun = $pekebun->fullname;
+                if ($model->save(false)) {
+                    return $this->redirect(['record-list']);
+                }
             }
         } else {
             $model->loadDefaultValues();
