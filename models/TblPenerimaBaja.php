@@ -40,6 +40,8 @@ class TblPenerimaBaja extends \yii\db\ActiveRecord
             [['type', 'status', 'update_by', 'no_tel', 'role'], 'integer'],
             [['create_dt', 'update_dt'], 'safe'],
             [['fullname'], 'string', 'max' => 255],
+            [['no_sps'], 'unique', 'message' => 'SPS sudah digunakan.'],
+
             [['email', 'password'], 'string', 'max' => 200],
             [['icno'], 'string', 'max' => 12],
             [['no_sps'], 'string', 'max' => 20],

@@ -67,12 +67,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     'attribute' => 'modul',
                     'label' => 'Modul',
                     'value' => 'smodul.modul',
-                ],                // [
-                //     'attribute' => 'no_sps_40',
-                //     'label' => 'Pekebun',
-                //     'value' => 'pekebun.fullname',
-                // ],
-                'nama_pekebun',
+                ],                
+                [
+                    'attribute' => 'no_sps_40',
+                    'label' => 'Pekebun',
+                    'value' => 'pekebun.fullname',
+                ],
+                // 'nama_pekebun',
                 // 'admin.fullname',
                 // [
                 //     'attribute' => 'status',

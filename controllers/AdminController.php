@@ -143,7 +143,7 @@ class AdminController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['receipent-list', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -189,7 +189,7 @@ class AdminController extends Controller
 
                 $pekebun = TblPenerimaBaja::findOne(['id' => $model->no_sps_42]);
                 // var_dump($model->no_sps_42);die;
-                $model->nama_pekebun = $pekebun->fullname;
+                $model->nama_pekebun = $pekebun->fullname != NULL ? $pekebun->fullname : $model->nama_pekebun;
                 if ($model->save(false)) {
                     return $this->redirect(['record-list']);
                 }

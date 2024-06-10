@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+    Options +FollowSymlinks
+    RewriteEngine On
+
+    # Ensure the URL is not already in the web directory
+    RewriteCond %{REQUEST_URI} !^/risda/web/
+
+    # Rewrite all other requests to point to the web directory
+    RewriteRule ^(.*)$ /risda/web/$1 [L]
+</IfModule>

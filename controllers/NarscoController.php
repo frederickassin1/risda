@@ -121,7 +121,7 @@ class NarscoController extends Controller
             if ($model->load($this->request->post())) {
                 // var_dump($model->r1);die;
                 if ($model->rp == 0 && $model->r1 == 0 && $model->r4 == 0) {
-                    Yii::$app->session->setFlash('warning', 'Haraf Maaf. Rekod telah pun dikemaskini');
+                    Yii::$app->session->setFlash('warning', 'Haraf Maaf. Tiada Rekod dikemaskini');
 
                     return $this->redirect(['record-list', 'id' => $model->id]);
                 } else {
@@ -210,23 +210,29 @@ class NarscoController extends Controller
     // public function action
     //get data
     public function actionGetSpsData()
-    {
-        Yii::$app->response->format = Response::FORMAT_JSON;
+{
+    Yii::$app->response->format = Response::FORMAT_JSON;
 
-        $id = Yii::$app->request->post('id');
-        $model = TblRecordsAdmin::find()->where(['no_sps_42' => $id, 'status' => 0]);
+    $id = Yii::$app->request->post('id');
+
+    // Initialize sums to 0
+    $rp = 0;
+    $r1 = 0;
+    $r4 = 0;
+
+    $model = TblRecordsAdmin::find()->where(['no_sps_40' => $id, 'status' => 0]);
+
+    if ($model->exists()) {
         $rp = $model->sum('rp');
         $r1 = $model->sum('r1');
         $r4 = $model->sum('r4');
-
-        if ($model) {
-            return [
-                'rp' => $rp,
-                'r1' => $r1,
-                'r4' => $r4
-            ];
-        }
-
-        return null;
     }
+
+    return [
+        'rp' => $rp,
+        'r1' => $r1,
+        'r4' => $r4
+    ];
+}
+
 }
