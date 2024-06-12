@@ -110,16 +110,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 //         return Html::a('<i class="fas fa-edit"></i>', Url::to(['users/view', 'id' => $model->id]), ['class' => 'btn btn-primary btn-xs']);
                 //     }
                 // ],
-                // [
-                //     'label' => '',
-                //     'format' => 'raw',
-                //     'value' => function ($model) {
-                //         return Html::a('<i class="fas fa-trash"></i>', Url::to(['users/delete', 'id' => $model->id]), ['class' => 'btn btn-danger btn-xs', 'data' => [
-                //             'confirm' => 'Anda pasti untuk membuang pengguna ini ?',
-                //             'method' => 'post',
-                //         ],]);
-                //     }
-                // ]
+                [
+                    'label' => '',
+                    'format' => 'raw',
+                    'value' => function ($model) {
+                        return Html::a('<i class="fas fa-trash"></i>', Url::to(['admin/delete', 'id' => $model->id]), ['class' => 'btn btn-danger btn-xs', 'data' => [
+                            'confirm' => 'Anda pasti untuk membuang data ini ?',
+                            'method' => 'post',
+                        ],]);
+                    }
+                ]
 
             ],
         ]); ?>

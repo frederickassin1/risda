@@ -202,6 +202,18 @@ class AdminController extends Controller
             'model' => $model,
         ]);
     }
-    // public function action
+    public function actionDelete($id){
+
+        $model = TblRecordsAdmin::find()->where(['id'=>$id,'status' => 0])->one();
+        if($model){
+            $model->delete();
+            return $this->redirect(['record-list']);
+
+        }else{
+            Yii::$app->session->setFlash('error', 'Rekod ada berkaitan dengan data lain. Tidak boleh dipadam');
+            return $this->redirect(['record-list']);
+
+        }
+    }
 
 }
