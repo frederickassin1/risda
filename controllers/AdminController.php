@@ -31,6 +31,7 @@ use app\models\sukum\TblPendaftaran;
 use app\models\sukum\TblPendaftaranSearch;
 use app\models\sukum\TblSukan;
 use app\models\sukum\TblSukanSearch;
+use app\models\TblBajaKeluarMasuk;
 use app\models\TblPenerimaBaja;
 use app\models\TblPenerimaBajaSearch;
 use app\models\TblPenyertaan;
@@ -215,5 +216,24 @@ class AdminController extends Controller
 
         }
     }
+    public function actionUpdateJum($id){
 
+        $model = TblBajaKeluarMasuk::find()->where(['id'=>$id])->one();
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post())) {
+
+        
+                if ($model->save(false)) {
+                    return $this->redirect(['narsco/record-list']);
+                }
+            }
+        } else {
+            $model->loadDefaultValues();
+        }
+
+        return $this->render('update-jum', [
+            'model' => $model,
+        ]);
+
+    }
 }

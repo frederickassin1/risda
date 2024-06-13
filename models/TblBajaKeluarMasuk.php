@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\Html;
 
 /**
  * This is the model class for table "tbl_inout_baja".
@@ -72,5 +73,15 @@ class TblBajaKeluarMasuk extends \yii\db\ActiveRecord
             'narsco_id' => 'Narsco ID',
             'type' => 'Type',
         ];
+    }
+    public static function check($id)
+    {
+        $val = '';
+        $model = self::find()->orderBy(['added_dt' => SORT_DESC])->one();
+
+        if($model->id == $id){
+            $val = true;
+        }
+        return $val;
     }
 }

@@ -64,8 +64,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     'value' => 'smodul.modul',
                 ],
                 // 'smodul.modul',
-                // 'pekebun.fullname',
-                'nama_pekebun',
+                'pekebun.fullname',
+                // 'nama_pekebun',
 
                 // 'admin.fullname',
                 // [
