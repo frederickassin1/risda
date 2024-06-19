@@ -123,7 +123,21 @@ class UsersController extends Controller
             'model' => $model,
         ]);
     }
+    public function actionUpdateReceipent($id){
+        $model = TblPenerimaBaja::findOne(['id' => $id]);
+        
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['admin/receipent-list']);
+            }
+        } else {
+            $model->loadDefaultValues();
+        }
 
+        return $this->render('create-receipent', [
+            'model' => $model,
+        ]);
+    }
     /**
      * Updates an existing TblUsers model.
      * If update is successful, the browser will be redirected to the 'view' page.

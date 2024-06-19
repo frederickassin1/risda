@@ -5,22 +5,20 @@ namespace app\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\PasswordResetRequestForm;
-use app\models\pml\RefAkses;
 use app\models\ResetPasswordForm;
-use app\models\Ref_Kategori;
-use app\models\RefSukan;
+use Mpdf\Mpdf;
+
 use app\models\TblInoutBaja;
 use app\models\TblJumBaja;
-use app\models\TblPenginapan;
-use app\models\TblPenyertaan;
-use app\models\TblPenyertaanSearch;
 use app\models\TblRecordsAdmin;
-use app\models\TblSetup;
 use InvalidArgumentException;
+use kartik\mpdf\Pdf;
 use yii\helpers\VarDumper;
 
 class SiteController extends Controller
@@ -150,6 +148,58 @@ class SiteController extends Controller
         return $this->render('contact-us', []);
     }
 
-   
-    
+  
+
+    public function actionPrint()
+    {
+        $admin_rp = TblRecordsAdmin::find()->where(['YEAR(tarikh_sps)' => date('Y')]);
+        $done = TblRecordsAdmin::find()->where(['YEAR(tarikh_sps)' => date('Y'),'status' => 1]);
+        $transit = TblRecordsAdmin::find()->where(['YEAR(tarikh_sps)' => date('Y'),'status' => 2]);
+        $in_stor = TblInoutBaja::find()->where(['YEAR(added_dt)' => date('Y')])->orderBy(['added_dt' => SORT_DESC])->one();
+      
+        $this->view->title = "RIngkasan ()";
+        // get your HTML raw content without any layouts or scripts
+        $content = $this->renderPartial('_print', [
+            'rp' => $admin_rp->sum('rp'),
+            'r1' => $admin_rp->sum('r1'),
+            'r4' => $admin_rp->sum('r4'),
+            'f_rp' => $done->sum('rp'),
+            'f_r1' => $done->sum('r1'),
+            'f_r4' => $done->sum('r4'),
+            't_rp' => $transit->sum('rp'),
+            't_r1' => $transit->sum('r1'),
+            't_r4' => $transit->sum('r4'),
+            'in_stor' => $in_stor
+        ]);
+        // setup kartik\mpdf\Pdf component
+        $pdf = new Pdf([
+            // set to use core fonts only
+            'mode' => Pdf::MODE_CORE,
+            'filename' => "Ringkasan.pdf",
+            // A4 paper format
+            'format' => Pdf::FORMAT_A4,
+            // portrait orientation
+            'orientation' => Pdf::ORIENT_PORTRAIT,
+            // stream to browser inline
+            'destination' => Pdf::DEST_BROWSER,
+            // your html content input
+            'content' => $content,
+            // format content from your own css file if needed or use the
+            // enhanced bootstrap css built by Krajee for mPDF formatting 
+            'cssFile' => '@vendor/kartik-v/yii2-mpdf/src/assets/kv-mpdf-bootstrap.min.css',
+            // any css to be embedded if required
+            'cssInline' => '.kv-heading-1{font-size:18px}',
+            // set mPDF properties on the fly
+            'options' => ['title' => "Ringkasan"],
+            // call mPDF methods on the fly
+            'methods' => [
+                'SetHeader' => ["Ringkasan"],
+                'SetFooter' => ["INI ADALAH CETAKAN KOMPUTER, TANDATANGAN TIDAK DIPERLUKAN||{PAGENO}"],
+                //    'SetFooter' => [' {PAGENO}'],
+            ]
+        ]);
+
+        // return the pdf output as per the destination setting
+        return $pdf->render();
+    }
 }

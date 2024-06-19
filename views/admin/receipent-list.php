@@ -56,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'label' => '',
                     'format' => 'raw',
                     'value' => function ($model) {
-                        return Html::a('<i class="fas fa-edit"></i>', Url::to(['users/view', 'id' => $model->id]), ['class' => 'btn btn-primary btn-xs']);
+                        return Html::a('<i class="fas fa-edit"></i>', Url::to(['users/update-receipent', 'id' => $model->id]), ['class' => 'btn btn-primary btn-xs']);
                     }
                 ],
                 // [
