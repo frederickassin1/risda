@@ -51,13 +51,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         return '<span class="right badge badge-' . $badge . '">' . $text . '</span>';
                     },
                 ],
-                // [
-                //     'label' => '',
-                //     'format' => 'raw',
-                //     'value' => function ($model) {
-                //         return Html::a('<i class="fas fa-edit"></i>', Url::to(['users/view', 'id' => $model->id]), ['class' => 'btn btn-primary btn-xs']);
-                //     }
-                // ],
+                [
+                    'label' => '',
+                    'format' => 'raw',
+                    'value' => function ($model) {
+                        return Html::a('<i class="fas fa-edit"></i>', Url::to(['admin/update-sps', 'id' => $model->id]), ['class' => 'btn btn-primary btn-xs']);
+                    }
+                ],
                 // [
                 //     'label' => '',
                 //     'format' => 'raw',

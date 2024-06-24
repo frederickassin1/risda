@@ -50,7 +50,7 @@ $url = Yii::getAlias("@web") . '/images/';
 
 ?>
 
-<body class="hold-transition login-page" style="background-image:url('<?= $url; ?>risda.png');background-repeat:no-repeat; background-position:center; background-size:40%;">
+<body class="hold-transition login-page" style="background-image:url('<?= $url; ?>risda.png');background-repeat:no-repeat; background-position:center; background-size:100%;">
     <?php $this->beginBody() ?>
     <div class="login-box">
         <!-- /.login-logo -->

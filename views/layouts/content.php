@@ -11,7 +11,8 @@ $url = Yii::getAlias("@web") . '/images/';
 
 
 ?>
-<div class="content-wrapper" style="background-image:url('<?= $url; ?>background.png');background-repeat:initial; background-position:center; background-size:cover;">
+<div class="content-wrapper" style="background-image:url('<?= $url; ?>risda.png');background-repeat:initial; background-position:center; background-size:cover;">
+
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">

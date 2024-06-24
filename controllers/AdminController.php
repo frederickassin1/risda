@@ -138,6 +138,38 @@ class AdminController extends Controller
             'model' => $model,
         ]);
     }
+    public function actionUpdateSps($id)
+    {
+        $model = RefSpsGroup::findOne(['id' => $id]);
+
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['sps-list', 'id' => $model->id]);
+            }
+        } else {
+            $model->loadDefaultValues();
+        }
+
+        return $this->render('update-sps', [
+            'model' => $model,
+        ]);
+    }
+    public function actionUpdateModul($id)
+    {
+        $model = RefModul::findOne(['id' => $id]);
+
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['sps-list', 'id' => $model->id]);
+            }
+        } else {
+            $model->loadDefaultValues();
+        }
+
+        return $this->render('update-modul', [
+            'model' => $model,
+        ]);
+    }
     public function actionCreateReceipent()
     {
         $model = new TblPenerimaBaja();
