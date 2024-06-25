@@ -69,7 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'value' => 'smodul.modul',
                 ],                
                 [
-                    'attribute' => 'no_sps_40',
+                    'attribute' => 'nama',
                     'label' => 'Pekebun',
                     'value' => 'pekebun.fullname',
                 ],

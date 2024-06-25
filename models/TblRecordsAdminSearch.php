@@ -25,7 +25,7 @@ class TblRecordsAdminSearch extends TblRecordsAdmin
         return [
             [['id', 'rp', 'r1', 'r4', 'jum_baja', 'fleet_rp', 'fleet_r1', 'fleet_r4', 'fleet_jum_baja'], 'integer'],
             // [['', 'sps_no','modul','nama'],'safe'],
-            [['sps_group','tarikh_sps', 'no_sps_42', 'no_sps_40', 'modul', 'nama_pekebun', 'nama_ppr', 'status', 'fleet_tarikh_terima', 'fleet_tarikh_bekalan', 'added_by', 'added_dt', 'update_by', 'update_dt'], 'safe'],
+            [['sps_group','nama','tarikh_sps', 'no_sps_42', 'no_sps_40', 'modul', 'nama_pekebun', 'nama_ppr', 'status', 'fleet_tarikh_terima', 'fleet_tarikh_bekalan', 'added_by', 'added_dt', 'update_by', 'update_dt'], 'safe'],
         ];
     }
 
@@ -58,6 +58,31 @@ class TblRecordsAdminSearch extends TblRecordsAdmin
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'attributes' => [
+                    'tarikh_sps',
+                    'no_sps_42' => [
+                        'asc' => ['ref_sps_group.sps_group' => SORT_ASC],
+                        'desc' => ['ref_sps_group.sps_group' => SORT_DESC],
+                    ],
+                    'no_sps_40' => [
+                        'asc' => ['tbl_penerima_baja.no_sps' => SORT_ASC],
+                        'desc' => ['tbl_penerima_baja.no_sps' => SORT_DESC],
+                    ],
+                    'modul' => [
+                        'asc' => ['ref_modul.modul' => SORT_ASC],
+                        'desc' => ['ref_modul.modul' => SORT_DESC],
+                    ],
+                    'nama' => [
+                        'asc' => ['tbl_penerima_baja.fullname' => SORT_ASC],
+                        'desc' => ['tbl_penerima_baja.fullname' => SORT_DESC],
+                    ],
+                    'rp',
+                    'r1',
+                    'r4',
+                    'status',
+                ],
+            ],
         ]);
 
         $this->load($params);
@@ -84,7 +109,6 @@ class TblRecordsAdminSearch extends TblRecordsAdmin
             'added_dt' => $this->added_dt,
             'update_dt' => $this->update_dt,
         ]);
-        // VarDumper::dump( $params, $depth = 10, $highlight = true);die;
         $query->andFilterWhere(['like', 'tarikh_sps', $this->tarikh_sps])
             // ->andFilterWhere(['like', 'no_sps_42', $this->no_sps_42])
             // ->andFilterWhere(['like', 'no_sps_40', $this->no_sps_40])
@@ -96,9 +120,11 @@ class TblRecordsAdminSearch extends TblRecordsAdmin
             ->andFilterWhere(['like', 'update_by', $this->update_by])
             ->andFilterWhere(['like', 'ref_sps_group.sps_group', $this->no_sps_42])
             ->andFilterWhere(['like', 'ref_modul.modul', $this->modul])
-            ->andFilterWhere(['like', 'tbl_penerima_baja.no_sps', $this->no_sps_40]);
+            ->andFilterWhere(['like', 'tbl_penerima_baja.no_sps', $this->no_sps_40])
+            ->andFilterWhere(['like', 'tbl_penerima_baja.fullname', $this->nama]);
             // ->andFilterWhere(['like', 'f.fullname', $this->no_sps_40])
             // ->andFilterWhere(['like', 'p.no_sps', $this->no_sps_40]);
+        // VarDumper::dump($dataProvider, $depth = 10, $highlight = true);die;
 
         return $dataProvider;
     }
