@@ -6,5 +6,5 @@
     RewriteCond %{REQUEST_URI} !^/risda/web/
 
     # Rewrite all other requests to point to the web directory
-    RewriteRule ^(.*)$ /risda/web/$1 [L]
+    RewriteRule ^(.*)$ /famasurvey/web/$1 [L]
 </IfModule>

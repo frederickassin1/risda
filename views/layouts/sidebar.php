@@ -54,57 +54,8 @@ error_reporting(0);
                         'icon' => 'home',
                         'url' => ['site/index'],
                     ],
-                    [
-                        'label' => 'Admin',
-                        'icon' => 'users-cog',
-                        // $id = Yii::$app->user->identity;
-                        // // VarDumper::dump($id->password);die;
-                        // Yii::$app->passwordPolicy->checkDefaultPassword(Yii::$app->user->identity->password);
-
-                        // Assuming this is within a widget configuration or similar context
-
-                        'visible' => (Yii::$app->user->identity->type == 1) && !Yii::$app->passwordPolicy->checkPassword(Yii::$app->user->identity->password),
-                        'items' => [
-                            ['label' => 'Senarai Pengguna', 'url' => ['admin/user-list'], 'icon' => 'users'],
-                            ['label' => 'Senarai Penerima Baja', 'url' => ['admin/receipent-list'], 'icon' => 'users'],
-                            ['label' => 'SPS GROUP', 'url' => ['admin/sps-list'], 'icon' => 'users'],
-                            ['label' => 'Modul', 'url' => ['admin/modul-list'], 'icon' => 'users'],
-                            ['label' => 'Rekod Penerima Baja', 'url' => ['admin/record-list'], 'icon' => 'list'],
-
-                        ],
-                    ],
-                    [
-                        'label' => 'Fleet',
-                        'icon' => 'users-cog',
-                        // $id = Yii::$app->user->identity;
-                        // // VarDumper::dump($id->password);die;
-                        // Yii::$app->passwordPolicy->checkDefaultPassword(Yii::$app->user->identity->password);
-
-                        // Assuming this is within a widget configuration or similar context
-
-                        'visible' => (Yii::$app->user->identity->type == 1 || Yii::$app->user->identity->type == 2) && !Yii::$app->passwordPolicy->checkPassword(Yii::$app->user->identity->password),
-                        'items' => [
-                           
-                            ['label' => 'Rekod Penerima Baja', 'url' => ['fleet/record-list'], 'icon' => 'list'],
-
-                        ],
-                    ],
-                    [
-                        'label' => 'Narsco',
-                        'icon' => 'users-cog',
-                        // $id = Yii::$app->user->identity;
-                        // // VarDumper::dump($id->password);die;
-                        // Yii::$app->passwordPolicy->checkDefaultPassword(Yii::$app->user->identity->password);
-
-                        // Assuming this is within a widget configuration or similar context
-
-                        'visible' => (Yii::$app->user->identity->type == 1 || Yii::$app->user->identity->type == 3) && !Yii::$app->passwordPolicy->checkPassword(Yii::$app->user->identity->password),
-                        'items' => [
-                           
-                            ['label' => 'Rekod ', 'url' => ['narsco/record-list'], 'icon' => 'list'],
-
-                        ],
-                    ],
+               
+                 
 
                 ],
             ]);
