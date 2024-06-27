@@ -105,4 +105,8 @@ class TblRecordsAdmin extends \yii\db\ActiveRecord
     {
         return $this->hasOne(RefSpsGroup::className(), ['sps_group' => 'no_sps_42']);
     }
+    public function getFleet()
+    {
+        return $this->hasOne(TblNarsco::className(), ['record_id' => 'id']);
+    }
 }

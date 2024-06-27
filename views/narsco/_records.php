@@ -35,23 +35,6 @@ use yii\helpers\Url;
     </div>
 
     <div class="form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12">NO SPS 42: <span class="required" style="color:red;">*</span></label>
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <?= $form->field($model, 'no_sps_42')->label(false)->widget(Select2::classname(), [
-                'data' => ArrayHelper::map(TblPenerimaBaja::find()->where(['status' => 1])->all(), 'id', function ($model) {
-                    return $model->fullname . '( ' . $model->no_sps . ' )';
-                }),
-                'options' => [
-                    'placeholder' => 'Pilih SPS 42',
-                    'class' => 'form-control col-md-7 col-xs-12',
-                    'id' => 'no-sps-42-dropdown'
-                ],
-                'pluginOptions' => ['allowClear' => true]
-            ]); ?>
-        </div>
-    </div>
-
-    <div class="form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12">NO SPS 40: <span class="required" style="color:red;">*</span></label>
         <div class="col-md-12 col-sm-12 col-xs-12">
             <?= $form->field($model, 'no_sps_40')->label(false)->widget(Select2::classname(), [

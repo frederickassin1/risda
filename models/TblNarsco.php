@@ -44,7 +44,7 @@ class TblNarsco extends \yii\db\ActiveRecord
         return [
             [['no_sps_40', 'tarikh_keluar'], 'required'],
             [['tarikh_keluar', 'tarikh_masuk', 'added_dt'], 'safe'],
-            [['rp', 'r1', 'r4', 'rp_masuk', 'rp_keluar', 'rp_baki', 'r1_masuk', 'r1_keluar', 'r1_baki', 'r4_masuk', 'r4_keluar', 'r4_baki'], 'integer'],
+            [['record_id','rp', 'r1', 'r4', 'rp_masuk', 'rp_keluar', 'rp_baki', 'r1_masuk', 'r1_keluar', 'r1_baki', 'r4_masuk', 'r4_keluar', 'r4_baki'], 'integer'],
             [['no_sps_40'], 'string', 'max' => 25],
             [['added_by'], 'string', 'max' => 12],
             [['rp'], 'checkrp', 'on' => ['add']],

@@ -33,6 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'columns' => [
                 ['class' => 'yii\grid\SerialColumn'],
                 [
+                    'label' => 'Tarikh Bekalan',
+                    'value' => 'fleet.tarikh_keluar',
+                ],  
+                [
                     'attribute' => 'tarikh_sps',
                     'filter' => DatePicker::widget([
                         'model' => $searchModel,
@@ -102,7 +106,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'value' => function ($model) {
                         return Html::a('<i class="fas fa-edit"></i>', Url::to(['fleet/update', 'id' => $model->id]), ['class' => 'btn btn-primary btn-xs']);
                     }
-                ],
+                ]
                 // [
                 //     'label' => '',
                 //     'format' => 'raw',

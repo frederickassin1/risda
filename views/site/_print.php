@@ -12,7 +12,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-header">
                     <h5 class="card-title">Ringkasan Data</h5>
                 </div>
-        
                 <div class="card-body">
                     <table class="table table-bordered table-striped">
                         <thead>

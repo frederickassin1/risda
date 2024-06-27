@@ -125,21 +125,10 @@ class NarscoController extends Controller
 
                     return $this->redirect(['record-list', 'id' => $model->id]);
                 } else {
+                    $record_id = TblRecordsAdmin::find()->where(['no_sps_40' => $model->no_sps_40,'status'=>0,'rp'=>$model->rp,'r1'=>$model->r1,'r4'=>$model->r4])->one();
                     $model->added_by = Yii::$app->user->identity->id;
-                    // if ($model->tarikh_keluar != NULL && $model->rp != 0) {
-                    //     $model->rp_keluar = $model->rp;
-                    //     // $model->rp_baki = TblNarsco::baki('rp') - $model->rp;
-                    // }
-                    // if ($model->tarikh_keluar != NULL && $model->r1 != 0) {
-                    //     $model->r1_keluar = $model->r1;
-                    //     // $model->r1_baki = TblNarsco::baki('r1') - $model->r1;
-                    // }
-                    // if ($model->tarikh_keluar != NULL && $model->r4 != 0) {
-                    //     $model->r4_keluar = $model->r4;
-                    //     // $model->r4_baki = TblNarsco::baki('r4') - $model->r4;
-                    // }
-                    // var_dump($model->r4_baki);die;
-                    $rekod_admin = TblRecordsAdmin::find()->where(['no_sps_40' => $model->no_sps_40])->all();
+                    $model->record_id = $record_id->id;
+                    $rekod_admin = TblRecordsAdmin::find()->where(['no_sps_40' => $model->no_sps_40,'status'=>0])->all();
                     foreach ($rekod_admin as $v) {
                         $v->status = '2';
                         $v->save(false);
