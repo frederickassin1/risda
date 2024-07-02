@@ -4,8 +4,12 @@ use app\models\TblBajaKeluarMasuk;
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 ?>
-
-<div class="card card-primary card-outline heavy">
+<style>
+    .uppercase {
+        text-transform: uppercase;
+    }
+</style>
+<div class="card card-primary card-outline heavy uppercase">
     
     <div class="card-body">
         <p>

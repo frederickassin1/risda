@@ -14,8 +14,13 @@ $model->rp = 0;
 $model->r1 = 0;
 $model->r4 = 0;
 ?>
+<style>
+    .uppercase {
+        text-transform: uppercase;
+    }
+</style>
 
-<div class="ref-kategori-form">
+<div class="ref-kategori-form uppercase">
 
     <?php $form = ActiveForm::begin(); ?>
     <div class="form-group">

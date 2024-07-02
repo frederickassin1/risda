@@ -9,8 +9,12 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 
 ?>
-
-<div class="ref-kategori-form">
+<style>
+    .uppercase {
+        text-transform: uppercase;
+    }
+</style>
+<div class="ref-kategori-form uppercase">
 
 <?php $form = ActiveForm::begin([
     'enableAjaxValidation' => false, 

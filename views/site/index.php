@@ -6,13 +6,19 @@ $this->title = 'Home';
 $this->params['breadcrumbs'][] = $this->title;
 // var_dump($admin_rp);die;
 ?>
-<div class="container-fluid">
+<style>
+    .uppercase {
+        text-transform: uppercase;
+    }
+</style>
+<div class="container-fluid uppercase">
 
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">Ringkasan Data </h5>
+                    <h5 class="card-title">Laporan Keseluruhan Supply Monitoring System
+                    </h5>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>
@@ -46,11 +52,11 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <thead>
                                         <tr class="headings">
                                             <th style="width:auto; text-align:center;" rowspan="3">BAJA</th>
-                                            <th style="width:auto; text-align:center;" rowspan="3">JUMLAH BAJA SPS40 (RISDA)</th>
-                                            <th style="width: auto; text-align:center;" rowspan="3">SUDAH BEKAL (FLEET)</th>
+                                            <th style="width:auto; text-align:center;" rowspan="3">BAJA SPS40 (RISDA)</th>
+                                            <th style="width: auto; text-align:center;" rowspan="3">SELESAI (FLEET)</th>
                                             <th style="width: auto; text-align:center;" rowspan="3">TRANSIT (FLEET)</th>
-                                            <th style="width: auto; text-align:center;" rowspan="3">BELUM BEKAL</th>
-                                            <th style="width: auto; text-align:center;" rowspan="3">BAJA DI STOR (NARSCO)</th>
+                                            <th style="width: auto; text-align:center;" rowspan="3">BELUM BEKAL (FLEET)</th>
+                                            <th style="width: auto; text-align:center;" rowspan="3">BAKI STOK (STOR)</th>
 
                                         </tr>
 

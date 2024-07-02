@@ -11,10 +11,16 @@ use yii\widgets\Pjax;
 /** @var app\models\TblUsersSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Senarai Pengguna Berdaftar';
+$this->title = 'Senarai Penerima Baja Berdaftar';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="card card-primary card-outline heavy">
+<style>
+    .uppercase {
+        text-transform: uppercase;
+    }
+</style>
+
+<div class="card card-primary card-outline heavy uppercase">
     <div class="card-header">
         <h3 class="card-title"><i class="fas fa-user"></i>&nbsp;<?= Html::encode($this->title) ?></small></h3>
         <div class="card-tools">

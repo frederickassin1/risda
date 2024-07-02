@@ -55,7 +55,7 @@ class TblPenerimaBaja extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'fullname' => 'Nama Penuh',
+            'fullname' => 'Nama Penerima',
             'email' => 'Email',
             'password' => 'Password',
             'type' => 'Type',
@@ -66,7 +66,7 @@ class TblPenerimaBaja extends \yii\db\ActiveRecord
             'icno' => 'Icno',
             'no_tel' => 'No Tel',
             'role' => 'Role',
-            'no_sps' => 'No Sps',
+            'no_sps' => 'No Sps40',
         ];
     }
 }

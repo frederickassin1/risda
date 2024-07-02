@@ -15,7 +15,14 @@ use yii\widgets\Pjax;
 $this->title = 'Senarai Rekod';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="card card-primary card-outline heavy">
+<style>
+    .uppercase {
+        text-transform: uppercase;
+    }
+</style>
+<div class="card card-primary card-outline heavy uppercase">
+<?= $this->render('/_search',['searchModel'=>$searchModel]) ?>
+
     <div class="card-header">
         <h3 class="card-title"><i class="fas fa-user"></i>&nbsp;<?= Html::encode($this->title) ?></small></h3>
         <div class="card-tools">
@@ -28,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
         
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
-            'filterModel' => $searchModel,
+            // 'filterModel' => $searchModel,
             'tableOptions' => ['class' => 'table table-striped table-sm table-bordered'],
             'columns' => [
                 ['class' => 'yii\grid\SerialColumn'],
@@ -68,8 +75,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     'value' => 'smodul.modul',
                 ],
                 // 'smodul.modul',
-                'pekebun.fullname',
-                // 'nama_pekebun',
+                [
+                    'attribute' => 'nama',
+                    'label' => 'Pekebun',
+                    'value' => 'pekebun.fullname',
+                ],                // 'nama_pekebun',
 
                 // 'admin.fullname',
                 // [

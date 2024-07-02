@@ -10,8 +10,12 @@ use yii\widgets\ActiveForm;
 /** @var app\models\TblUsers $model */
 /** @var yii\widgets\ActiveForm $form */
 ?>
-
-<div class="tbl-users-form">
+<style>
+    .uppercase {
+        text-transform: uppercase;
+    }
+</style>
+<div class="tbl-users-form uppercase">
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -19,7 +23,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'fullname')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'icno')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'no_pekerja')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'type')->dropDownList([ '1' => 'ADMINISTRATOR','2' => 'FLEET','3' => 'NARSCO']) ?>
 

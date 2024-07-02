@@ -11,8 +11,13 @@ use yii\widgets\ActiveForm;
 /** @var yii\widgets\ActiveForm $form */
 $model->status = 1;
 ?>
+<style>
+    .uppercase {
+        text-transform: uppercase;
+    }
+</style>
 
-<div class="tbl-users-form">
+<div class="tbl-users-form uppercase">
 
     <?php $form = ActiveForm::begin(); ?>
 

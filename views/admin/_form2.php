@@ -8,8 +8,13 @@ use yii\helpers\Url;
  
 // $model->maks = $sukan->maks;
 ?>
+<style>
+    .uppercase {
+        text-transform: uppercase;
+    }
+</style>
 
-<div class="ref-kategori-form">
+<div class="ref-kategori-form uppercase">
 
     <?php $form = ActiveForm::begin(); ?>
     <div class="form-group">

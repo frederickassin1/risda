@@ -11,8 +11,12 @@ $bil = 1;
 $this->title = 'Senarai Rekod';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
-<div class="card card-primary card-outline heavy">
+<style>
+    .uppercase {
+        text-transform: uppercase;
+    }
+</style>
+<div class="card card-primary card-outline heavy uppercase">
     <div class="card-header">
         <h3 class="card-title"><i class="fas fa-user"></i>&nbsp;<?= Html::encode($this->title) ?></small></h3>
         <div class="card-tools">

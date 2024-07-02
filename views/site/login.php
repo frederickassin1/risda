@@ -11,7 +11,7 @@ use yii\helpers\Url;
 
         <div class="card card-outline card-info">
             <div class="card-header text-center">
-                <a href="<?= Yii::$app->homeUrl ?>" class="h3"><b>Supply Monitoring System (SMS)</b></a>
+                <a href="<?= Yii::$app->homeUrl ?>" class="h3"><b>SUPPLY MONITORING SYSTEM (SMS)</b></a>
 
 
 

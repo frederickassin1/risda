@@ -40,7 +40,7 @@ class TblInOutBajaSearch extends TblInOutBaja
      */
     public function search($params)
     {
-        $query = TblInOutBaja::find();
+        $query = TblBajaKeluarMasuk::find();
 
         // add conditions that should always apply here
 

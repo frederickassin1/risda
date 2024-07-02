@@ -9,8 +9,13 @@ $user = Yii::$app->user->identity; // Getting user id
 $model = TblUsers::find()->where(['id' => $user->id])->one();
 error_reporting(0);
 ?>
+<style>
+    .uppercase {
+        text-transform: uppercase;
+    }
+</style>
 
-<aside class="main-sidebar sidebar-dark-primary elevation-4" style="opacity: .9;">
+<aside class="main-sidebar sidebar-dark-primary elevation-4 uppercase" style="opacity: .9;">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
         <?php //echo Html::img('@web/images/ums-logo-white.png', ['class' => 'brand-image', 'style' => 'width:100px']); 
@@ -67,7 +72,7 @@ error_reporting(0);
                         'items' => [
                             ['label' => 'Senarai Pengguna', 'url' => ['admin/user-list'], 'icon' => 'users'],
                             ['label' => 'Senarai Penerima Baja', 'url' => ['admin/receipent-list'], 'icon' => 'users'],
-                            ['label' => 'SPS GROUP', 'url' => ['admin/sps-list'], 'icon' => 'users'],
+                            ['label' => 'NO SPS40', 'url' => ['admin/sps-list'], 'icon' => 'users'],
                             ['label' => 'Modul', 'url' => ['admin/modul-list'], 'icon' => 'users'],
                             ['label' => 'Rekod Penerima Baja', 'url' => ['admin/record-list'], 'icon' => 'list'],
 

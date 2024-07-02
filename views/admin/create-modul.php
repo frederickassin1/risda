@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\models\TblUsers $model */
 
-$this->title = 'Tambah Pengguna Baharu';
+$this->title = 'TAMBAH MODUL';
 $this->params['breadcrumbs'][] = ['label' => 'Senarai Penguna', 'url' => ['admin/user-list']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

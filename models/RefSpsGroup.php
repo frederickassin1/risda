@@ -43,7 +43,7 @@ class RefSpsGroup extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'sps_group' => 'Sps Group',
+            'sps_group' => 'Sps42',
             'status' => 'Status',
             'added_by' => 'Added By',
             'added_dt' => 'Added Dt',

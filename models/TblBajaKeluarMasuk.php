@@ -84,4 +84,13 @@ class TblBajaKeluarMasuk extends \yii\db\ActiveRecord
         }
         return $val;
     }
+    public static function baki($type){
+        //type for jenis baja , id adalah utk check id rekod
+        // $total = TblJumBaja::find()->where(['YEAR(added_dt)' => date('Y')])->orderBy(['added_dt' => SORT_DESC])->one();
+        $total = TblInoutBaja::find()->where(['YEAR(added_dt)' => date('Y')])->orderBy(['added_dt' => SORT_DESC])->one();
+        $out = self::find()->where(['YEAR(tarikh_keluar)' => date('Y')])->sum($type);
+        // $baki = $total->$type - $out;  
+        return $total;
+
+    }
 }

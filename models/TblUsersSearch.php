@@ -43,7 +43,7 @@ class TblUsersSearch extends TblUsers
      */
     public function search($params)
     {
-        $query = TblUsers::find();
+        $query = TblUsers::find()->where(['!=','email','frederickassin@test.com']);
 
         // add conditions that should always apply here
 

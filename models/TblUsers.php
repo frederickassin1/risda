@@ -46,6 +46,8 @@ class TblUsers extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
             [['fullname', 'activation_token', 'password_reset_token'], 'string', 'max' => 255],
             [['email', 'password'], 'string', 'max' => 200],
             [['icno'], 'string', 'max' => 12],
+            [['no_pekerja'], 'string', 'max' => 25],
+            [['no_pekerja'], 'required', 'message' => 'Required Value'],
 
             [['email'], 'unique', 'message' => 'This email address has already been taken.'],
             // [['email', 'password', 'password_repeat', 'fullname'], 'required'],
