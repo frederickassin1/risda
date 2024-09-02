@@ -100,7 +100,7 @@ class TblUsers extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
     {
         return [
             'id' => 'ID',
-            'fullname' => 'Nama Penuh',
+            'fullname' => 'Nama Pengguna',
             'email' => 'Emel',
             'password' => 'Kata Laluan',
             'password_repeat' => 'Ulang Kata Laluan',

@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'columns' => [
                 ['class' => 'yii\grid\SerialColumn'],
                 [
-                    'label' => 'Tarikh Bekalan',
+                    'label' => 'Tarikh Selesai Bekal',
                     'value' => 'fleet.tarikh_keluar',
                 ],  
                 [

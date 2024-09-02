@@ -20,8 +20,8 @@ error_reporting(0);
     <a href="#" class="brand-link">
         <?php //echo Html::img('@web/images/ums-logo-white.png', ['class' => 'brand-image', 'style' => 'width:100px']); 
         ?>
-        <span class="brand-text">Supply Monitoring System</span>
-    </a>
+<span class="brand-text" style="font-size: 18px;">Supply Monitoring System</span>
+</a>
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -72,7 +72,7 @@ error_reporting(0);
                         'items' => [
                             ['label' => 'Senarai Pengguna', 'url' => ['admin/user-list'], 'icon' => 'users'],
                             ['label' => 'Senarai Penerima Baja', 'url' => ['admin/receipent-list'], 'icon' => 'users'],
-                            ['label' => 'NO SPS40', 'url' => ['admin/sps-list'], 'icon' => 'users'],
+                            ['label' => 'SPS40', 'url' => ['admin/sps-list'], 'icon' => 'users'],
                             ['label' => 'Modul', 'url' => ['admin/modul-list'], 'icon' => 'users'],
                             ['label' => 'Rekod Penerima Baja', 'url' => ['admin/record-list'], 'icon' => 'list'],
 

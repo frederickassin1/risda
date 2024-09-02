@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\LinkPager;
 ?>
 <style>
@@ -31,24 +32,9 @@ use yii\widgets\LinkPager;
                                     <th style="width: auto; text-align:center;" rowspan="3">RP</th>
                                     <th style="width: auto; text-align:center;" rowspan="3">R1</th>
                                     <th style="width: auto; text-align:center;" rowspan="3">R4</th>
-                                    <!-- <th style="width: auto; text-align:center;" colspan="9">KELUAR & MASUK STOR KENINGAU</th> -->
+                                    <th style="width: auto; text-align:center;" colspan="9"></th>
                                 </tr>
-                                <!-- <tr class="headings">
-                                    <th style="width: auto; text-align:center;" colspan="3">RP</th>
-                                    <th style="width: auto; text-align:center;" colspan="3">R1</th>
-                                    <th style="width: auto; text-align:center;" colspan="3">R4</th>
-                                </tr>
-                                <tr class="headings">
-                                    <th style="width: auto; text-align:center;" colspan="1">MASUK</th>
-                                    <th style="width: auto; text-align:center;" colspan="1">KELUAR</th>
-                                    <th style="width: auto; text-align:center;" colspan="1">BAKI</th>
-                                    <th style="width: auto; text-align:center;" colspan="1">MASUK</th>
-                                    <th style="width: auto; text-align:center;" colspan="1">KELUAR</th>
-                                    <th style="width: auto; text-align:center;" colspan="1">BAKI</th>
-                                    <th style="width: auto; text-align:center;" colspan="1">MASUK</th>
-                                    <th style="width: auto; text-align:center;" colspan="1">KELUAR</th>
-                                    <th style="width: auto; text-align:center;" colspan="1">BAKI</th>
-                                </tr> -->
+                   
                             </thead>
 
                             <?php if (!empty($model)): ?>
@@ -65,6 +51,7 @@ use yii\widgets\LinkPager;
                                         <td><?= $data->rp ?></td>
                                         <td><?= $data->r1 ?></td>
                                         <td><?= $data->r4 ?></td>
+                                        <td><?= Html::a('<i class="fas fa-trash"></i>', Url::to(['narsco/delete-record', 'id' => $data->id]), ['class' => 'btn btn-primary btn-xs']) ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             <?php else: ?>

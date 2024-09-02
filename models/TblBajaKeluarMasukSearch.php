@@ -5,6 +5,7 @@ namespace app\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\TblBajaKeluarMasuk;
+use Yii;
 
 /**
  * TblBajaKeluarMasukSearch represents the model behind the search form of `app\models\TblBajaKeluarMasuk`.
@@ -46,7 +47,12 @@ class TblBajaKeluarMasukSearch extends TblBajaKeluarMasuk
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 20,  // Set the number of items per page
+                'page' => Yii::$app->request->get('page') - 1, // Adjust to your needs
+            ],
         ]);
+        
 
         $this->load($params);
 

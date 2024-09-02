@@ -10,6 +10,8 @@ use yii\filters\VerbFilter;
 use yii\helpers\VarDumper;
 use yii\web\ForbiddenHttpException;
 use app\models\AverageCalculator;
+use app\models\TblBajaKeluarMasuk;
+use app\models\TblBajaKeluarMasukSearch;
 use app\models\TblInoutBaja;
 use app\models\TblInOutBajaSearch;
 use app\models\TblNarsco;
@@ -67,10 +69,41 @@ class NarscoController extends Controller
     {
         $searchModel = new TblNarscoSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
-        $searchModel2 = new TblInOutBajaSearch();
+        $searchModel2 = new TblBajaKeluarMasukSearch();
         $dataProvider2 = $searchModel2->search($this->request->queryParams);
 
         return $this->render('record-list', [
+            'searchModel' => $searchModel,
+            'model' => $dataProvider,
+            'searchModel2' => $searchModel2,
+            'model2' => $dataProvider2,
+
+        ]);
+    }
+
+    public function actionRecordInOut()
+    {
+        $searchModel = new TblNarscoSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
+        $searchModel2 = new TblBajaKeluarMasukSearch();
+        $dataProvider2 = $searchModel2->search($this->request->queryParams);
+
+        return $this->render('record_inout', [
+            'searchModel' => $searchModel,
+            'model' => $dataProvider,
+            'searchModel2' => $searchModel2,
+            'model2' => $dataProvider2,
+
+        ]);
+    }
+    public function actionRecordOut()
+    {
+        $searchModel = new TblNarscoSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
+        $searchModel2 = new TblBajaKeluarMasukSearch();
+        $dataProvider2 = $searchModel2->search($this->request->queryParams);
+
+        return $this->render('record_out', [
             'searchModel' => $searchModel,
             'model' => $dataProvider,
             'searchModel2' => $searchModel2,
@@ -111,6 +144,14 @@ class NarscoController extends Controller
     }
 
     // //add new records
+    public function actionDeleteRecord($id){
+        $model = TblNarsco::find()->where(['id'=>$id])->one();
+ 
+        $model->delete();
+        return $this->redirect(['record-list']);
+
+    }
+
     public function actionAddRecords()
     {
         $model = new TblNarsco();
@@ -133,8 +174,8 @@ class NarscoController extends Controller
                         $v->status = '2';
                         $v->save(false);
                     }
-                    $latestinout = TblInoutBaja::find()->where(['YEAR(added_dt)' => date('Y')])->orderBy(['added_dt' => SORT_DESC])->one();
-                    $inout = new TblInoutBaja();
+                    $latestinout = TblBajaKeluarMasuk::find()->where(['YEAR(added_dt)' => date('Y')])->orderBy(['added_dt' => SORT_DESC])->one();
+                    $inout = new TblBajaKeluarMasuk();
                     $inout->tarikh_keluar = $model->tarikh_keluar;
 
                     $inout->tarikh_masuk = NULL;
@@ -166,12 +207,19 @@ class NarscoController extends Controller
 
         ]);
     }
+    public function actionDeleteInOut($id){
+        $model = TblBajaKeluarMasuk::find()->where(['id'=>$id])->one();
+ 
+        $model->delete();
+        return $this->redirect(['record-list']);
+
+    }
     public function actionIn()
     {
-        $model = new TblInoutBaja();
+        $model = new TblBajaKeluarMasuk();
 
         // $model->scenario = 'in';
-        $latestinout = TblInoutBaja::find()->where(['YEAR(added_dt)' => date('Y')])->orderBy(['added_dt' => SORT_DESC])->one();
+        $latestinout = TblBajaKeluarMasuk::find()->where(['YEAR(added_dt)' => date('Y')])->orderBy(['added_dt' => SORT_DESC])->one();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {

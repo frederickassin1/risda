@@ -5,6 +5,7 @@ namespace app\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\TblInOutBaja;
+use Yii;
 
 /**
  * TblInOutBajaSearch represents the model behind the search form of `app\models\TblInOutBaja`.
@@ -43,9 +44,12 @@ class TblInOutBajaSearch extends TblInOutBaja
         $query = TblBajaKeluarMasuk::find();
 
         // add conditions that should always apply here
-
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 20,  // Set the number of items per page
+                'page' => Yii::$app->request->get('page') - 1, // Adjust to your needs
+            ],
         ]);
 
         $this->load($params);

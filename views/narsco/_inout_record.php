@@ -47,7 +47,7 @@ use yii\widgets\LinkPager;
                                     <th style="width: auto; text-align:center;" colspan="1">MASUK</th>
                                     <th style="width: auto; text-align:center;" colspan="1">KELUAR</th>
                                     <th style="width: auto; text-align:center;" colspan="1">BAKI</th>
-                                    <th style="width: auto; text-align:center;" colspan="1"></th>
+                                    <th style="width: auto; text-align:center;" colspan="2"></th>
                                 </tr>
                             </thead>
 
@@ -71,6 +71,7 @@ use yii\widgets\LinkPager;
                                         <td><?= $data->r4_keluar ?></td>
                                         <td><?= $data->r4_baki ?></td>
                                         <td class="text-center"><?= TblBajaKeluarMasuk::check($data->id) == true ? Html::a('<i class="fa fa-edit">', ["admin/update-jum", 'id' => $data->id]) : "" ;?></td>
+                                        <td class="text-center"><?= TblBajaKeluarMasuk::check($data->id) == true ? Html::a('<i class="fa fa-trash">', ["narsco/delete-in-out", 'id' => $data->id]) : "" ;?></td>
 
                                     </tr>
                                 <?php endforeach; ?>
