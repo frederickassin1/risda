@@ -83,6 +83,8 @@ class TblBajaKeluarMasukSearch extends TblBajaKeluarMasuk
 
         $query->andFilterWhere(['like', 'added_by', $this->added_by])
             ->andFilterWhere(['like', 'description', $this->description]);
+        
+        $query->andFilterWhere(['tarikh_masuk' => date('Y')]);
 
         return $dataProvider;
     }

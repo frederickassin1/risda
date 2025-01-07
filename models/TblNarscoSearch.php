@@ -76,6 +76,7 @@ class TblNarscoSearch extends TblNarsco
             'added_dt' => $this->added_dt,
         ]);
 
+        $query->andFilterWhere(['tarikh_keluar' => date('Y')]);
         $query->andFilterWhere(['like', 'no_sps_40', $this->no_sps_40])
             ->andFilterWhere(['like', 'added_by', $this->added_by]);
 

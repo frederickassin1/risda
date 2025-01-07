@@ -68,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                             <td style="text-align: center;"><?= $f_rp == NULL ? '0' : $f_rp  ?></td>
                                             <td style="text-align: center;"><?= $t_rp == NULL ? '0' : $t_rp ?></td>
                                             <td style="text-align: center;"><?= $rp - ($f_rp + $t_rp) ?></td>
-                                            <td style="text-align: center;"><?= $in_stor->rp_baki ?></td>
+                                            <td style="text-align: center;"><?= $in_stor ? $in_stor->rp_baki : '0' ?></td>
                                         </tr>
                                         <tr>
                                             <td style="text-align: center;">R1</td>
@@ -76,7 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                             <td style="text-align: center;"><?= $f_r1  == NULL ? '0' : $f_r1 ?></td>
                                             <td style="text-align: center;"><?= $t_r1 == NULL ? '0' : $t_r1 ?></td>
                                             <td style="text-align: center;"><?= $r1 - ($f_r1 + $t_r1) ?></td>
-                                            <td style="text-align: center;"><?= $in_stor->r1_baki ?></td>
+                                            <td style="text-align: center;"><?= $in_stor ? $in_stor->rp_baki : '0'  ?></td>
 
                                         </tr>
                                         <tr>
@@ -85,7 +85,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                             <td style="text-align: center;"><?= $f_r4  == NULL ? '0' : $f_r4 ?></td>
                                             <td style="text-align: center;"><?= $t_r4 == NULL ? '0' : $t_r4 ?></td>
                                             <td style="text-align: center;"><?= $r4 - ($f_r4 + $t_r4) ?></td>
-                                            <td style="text-align: center;"><?= $in_stor->r4_baki ?></td>
+                                            <td style="text-align: center;"><?= $in_stor ? $in_stor->rp_baki : '0'  ?></td>
 
                                         </tr>
 
